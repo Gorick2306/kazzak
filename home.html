@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAZAKK SHOW — Главная</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-grid">
+        <nav class="nav-left">
+            <a href="home.html" class="nav-link">Главная</a>
+            <a href="programs.html" class="nav-link">Программы и смета</a>
+        </nav>
+        <a href="home.html" class="center-brand">KAZAKK <span>SHOW</span></a>
+        <div class="nav-right">
+            <a href="repertoire.html" class="nav-link">Репертуар</a>
+            <a href="contacts.html" class="btn btn-red">Проверить дату</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <span class="eyebrow">Живой вокал • Корпоративы • Частные события</span>
+            <h1>Голос, который <span>создаёт атмосферу</span> вашего вечера</h1>
+            <p>Профессиональный исполнитель на корпоратив, юбилей или свадьбу. Сильный живой вокал, свой комплект звука и индивидуальный плейлист под гостей.</p>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="programs.html" class="btn btn-red">Рассчитать смету →</a>
+                <button onclick="document.getElementById('kp-modal').classList.add('open')" class="btn btn-outline">Презентация артиста (PDF)</button>
+            </div>
+
+            <div class="demo-player" id="demo-player">
+    <div class="player-top">
+        <button class="play-circle" id="play-btn-hero" onclick="window.parent.postMessage({type:'toggle'}, '*')">▶</button>
+        <div style="flex:1;">
+            <div style="font-size:12px; color:var(--red); font-weight:700; text-transform:uppercase;">Живое демо-исполнение</div>
+            <strong id="demo-title-hero" style="font-size:15px;">Танцевальный поп-хит (Live)</strong>
+        </div>
+        <div class="eq-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="demo-tracks">
+        <button class="demo-chip active" onclick="window.parent.postMessage({type:'switch', index:0}, '*')">Поп-драйв</button>
+        <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:1}, '*')">Хиты 90-х</button>
+        <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:2}, '*')">Лирика / Лаунж</button>
+    </div>
+</div>
+
+        </div>
+
+        <div class="collage">
+            <img class="collage-main" src="images/artist-1.jpg" alt="Вокалист KAZAKK SHOW на сцене">
+            <img class="collage-sub" src="images/artist-2.jpg" alt="Выступление KAZAKK SHOW на корпоративе">
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2>Интерактивные возможности сайта</h2>
+            <p style="color:var(--muted); max-width:420px;">Соберите программу своего вечера за 1 минуту прямо на сайте.</p>
+        </div>
+        <div class="grid-3">
+            <a href="programs.html" class="card-link">
+                <div>
+                    <span class="eyebrow">01 / Смета онлайн</span>
+                    <h3 style="font-size:26px; margin-bottom:10px;">Калькулятор выступления</h3>
+                    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Выберите количество блоков, формат площадки и аппаратуру — система сразу покажет точную стоимость.</p>
+                </div>
+                <span class="card-cta">Открыть калькулятор →</span>
+            </a>
+            <a href="repertoire.html" class="card-link">
+                <div>
+                    <span class="eyebrow">02 / Трек-лист</span>
+                    <h3 style="font-size:26px; margin-bottom:10px;">Конструктор плейлиста</h3>
+                    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Отметьте любимые песни из репертуара, и они автоматически прикрепятся к вашей заявке на дату.</p>
+                </div>
+                <span class="card-cta">Собрать плейлист →</span>
+            </a>
+            <a href="contacts.html" class="card-link featured-card">
+                <div>
+                    <span class="eyebrow">03 / Расписание</span>
+                    <h3 style="font-size:26px; margin-bottom:10px;">Календарь свободных дат</h3>
+                    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Проверьте свободные пятницы и субботы сезона и забронируйте дату без предоплаты.</p>
+                </div>
+                <span class="card-cta">Проверить календарь →</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="playlist-bar" id="playlist-bar">
+    <span>Выбрано песен в программу вечера: <strong id="playlist-count">0</strong></span>
+    <a href="contacts.html" class="btn btn-red" style="padding: 9px 18px;">Передать в заявку →</a>
+</div>
+
+<div class="kp-modal" id="kp-modal">
+    <div class="kp-sheet">
+        <button onclick="document.getElementById('kp-modal').classList.remove('open')" style="position:absolute; top:16px; right:18px; background:none; border:none; font-size:22px; cursor:pointer;">✕</button>
+        <span class="eyebrow">Коммерческое предложение • Сезон 2026</span>
+        <h2 style="font-size: 32px; margin-bottom: 12px;">KAZAKK SHOW — Живой вокал</h2>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 18px;">Профессиональное музыкальное оформление корпоративных и частных мероприятий. Работаем по договору, возможна оплата по расчётному счёту (самозанятый / ИП).</p>
+        <div style="background: var(--bg-soft); padding: 16px; border-radius: 6px; font-size: 14px; margin-bottom: 20px;">
+            <strong>Включено в программу:</strong><br>
+            • Живой вокал (от 1 до 3 блоков по 45 минут)<br>
+            • Более 120 хитов (поп, 90-е/2000-е, рок, лаунж)<br>
+            • Собственный комплект звука и радиомикрофоны<br>
+            • Стоимость: от 15 000 ₽ до 45 000 ₽ под ключ
+        </div>
+        <button onclick="window.print()" class="btn btn-red" style="width:100%;">Сохранить в PDF / Распечатать для директора</button>
+    </div>
+</div>
+
+<footer class="footer-plate">
+    <div class="container">
+        <div class="footer-top">
+            <div style="font-size: 14px; font-weight: 600;">Живой вокал и музыкальное сопровождение мероприятий</div>
+            <div class="footer-links">
+                <a href="home.html">Главная</a>
+                <a href="programs.html">Калькулятор сметы</a>
+                <a href="repertoire.html">Конструктор плейлиста</a>
+                <a href="contacts.html">Календарь дат</a>
+            </div>
+        </div>
+        <div class="footer-giant-title">KAZAKK SHOW</div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; opacity:0.85; flex-wrap:wrap; gap:10px;">
+            <span>© 2026 KAZAKK SHOW</span>
+            <span>Бронирование дат • +7 (900) 000-00-00</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+const saved = JSON.parse(localStorage.getItem('artist_playlist') || '[]');
+if (saved.length > 0) {
+    document.getElementById('playlist-count').innerText = saved.length;
+    document.getElementById('playlist-bar').classList.add('visible');
+}
+</script>
+<script>
+window.addEventListener('message', function(e) {
+    if (!e.data || e.data.type !== 'sync') return;
+    const heroBox = document.getElementById('demo-player');
+    const heroBtn = document.getElementById('play-btn-hero');
+    const heroTitle = document.getElementById('demo-title-hero');
+    if (heroTitle) heroTitle.innerText = e.data.title;
+    if (heroBox) heroBox.classList.toggle('playing', e.data.playing);
+    if (heroBtn) {
+        heroBtn.innerText = e.data.playing ? '❚❚' : '▶';
+        heroBtn.style.paddingLeft = e.data.playing ? '0px' : '3px';
+    }
+    document.querySelectorAll('.demo-chip').forEach((c, idx) => {
+        c.classList.toggle('active', idx === e.data.index);
+    });
+});
+</script>
+
+</body>
+</html>

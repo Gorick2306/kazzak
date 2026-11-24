@@ -737,3 +737,71 @@ body {
         height: 360px;
     }
 }
+/* Закреплённый сквозной мини-плеер внизу экрана */
+.global-player {
+    position: fixed;
+    bottom: 18px;
+    right: 24px;
+    z-index: 250;
+    background: var(--bg-white);
+    border: 1.5px solid var(--ink);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 14px 36px rgba(20, 20, 22, 0.24);
+    max-width: 440px;
+    width: 92%;
+}
+
+.global-player.playing .eq-bars span {
+    animation: eqPulse 0.7s infinite alternate;
+}
+
+.player-nav-btn {
+    background: var(--bg-soft);
+    border: 1.5px solid var(--border);
+    color: var(--ink);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.player-nav-btn:hover {
+    background: var(--red);
+    color: #ffffff;
+    border-color: var(--red);
+    transform: scale(1.06);
+}
+
+.player-seek {
+    width: 100%;
+    height: 4px;
+    accent-color: var(--red);
+    cursor: pointer;
+    margin-top: 6px;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .global-player {
+        left: 14px;
+        right: 14px;
+        bottom: 12px;
+        max-width: none;
+        width: auto;
+    }
+}
