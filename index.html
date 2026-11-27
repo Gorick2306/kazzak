@@ -189,6 +189,23 @@ window.addEventListener('message', function(e) {
         window.name = e.data.name;
     }
 });
+let touchStartY = 0;
+frame.addEventListener('load', () => {
+    try {
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        doc.addEventListener('touchstart', (e) => {
+            if (doc.body.scrollTop === 0) touchStartY = e.touches.clientY;
+            else touchStartY = 0;
+        }, { passive: true });
+        doc.addEventListener('touchend', (e) => {
+            if (touchStartY > 0 && e.changedTouches.clientY - touchStartY > 130 && doc.body.scrollTop === 0) {
+                window.location.reload();
+            }
+            touchStartY = 0;
+        }, { passive: true });
+    } catch (err) {}
+});
+
 </script>
 
 </body>
