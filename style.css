@@ -348,28 +348,39 @@ body {
     border-color: var(--red);
 }
 
-/* === ГЛАВНОЕ ФОТО НА ПЕРВОМ ЭКРАНЕ (С МЯГКИМ ОРЕОЛОМ) === */
-.hero-photo-blend {
+/* === КОЛЛАЖ НА ПЕРВОМ ЭКРАНЕ (БЕЗ РАМОК) === */
+.collage {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 560px;
 }
 
-.hero-photo-blend img {
-    width: 100%;
-    height: 100%;
+.collage-main {
+    width: 86%;
+    height: 90%;
     object-fit: cover;
     object-position: top center;
     border: none;
-    border-radius: 0;
-    box-shadow: none;
+    border-radius: 10px;
     display: block;
     -webkit-mask-image: radial-gradient(ellipse 76% 78% at 50% 48%, #000 58%, transparent 98%);
     mask-image: radial-gradient(ellipse 76% 78% at 50% 48%, #000 58%, transparent 98%);
+}
+
+.collage-sub {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 56%;
+    height: 50%;
+    object-fit: cover;
+    object-position: 50% 10%;
+    border: 2px solid #141416;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(20, 20, 22, 0.24);
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 /* === ОСТАЛЬНЫЕ ФОТОГРАФИИ (БЕЗ РАМОК И ОРЕОЛА, ВО ВЕСЬ РОСТ ПО ЦЕНТРУ) === */
@@ -896,12 +907,16 @@ body {
     border-radius: 10px;
     border-top: 5px solid var(--red);
 }
-/* === ПОДВАЛ (КРАСНЫЙ ФОН БЕЗ ЧЁРНОЙ ПОЛОСЫ, КРУПНЫЙ ЗАГОЛОВОК ПО ЦЕНТРУ) === */
+/* === ПОДВАЛ (ДО САМОГО НИЗА ЭКРАНА БЕЗ ЗАЗОРА ФОНА) === */
+/* === ПОДВАЛ (ПЕРЕКРЫВАЕТ ЛЮБОЙ ЗАЗОР СНИЗУ) === */
 .footer-plate {
     background: linear-gradient(135deg, #c81e1e 0%, #8e0d18 100%);
     color: #ffffff;
-    padding: 56px 0 115px;
+    padding: 56px 0 180px;
+    margin-bottom: -80px;
     border-top: none;
+    position: relative;
+    z-index: 10;
 }
 
 .footer-top {
@@ -1219,9 +1234,10 @@ body {
         grid-template-columns: 1fr;
         gap: 32px;
     }
-    .hero-photo-blend {
+        .collage {
         min-height: 360px;
     }
+
     .blend-gallery-2,
     .custom-song-box {
         grid-template-columns: 1fr;
@@ -1276,4 +1292,18 @@ body {
         right: 12px;
         bottom: 84px;
     }
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-plate {
+    margin-top: auto;
 }

@@ -4,35 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KAZAKK SHOW — Официальный сайт артиста</title>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=16">
     <style>
         html, body {
-            width: 100vw;
-            max-width: 100vw;
+            width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
+            background: #fbf9f6 !important;
+            background-image: none !important;
         }
         #site-frame {
-            width: 100vw;
-            max-width: 100vw;
+            position: fixed;
+            inset: 0;
+            width: 100%;
             height: 100%;
             border: none;
             display: block;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
 <body>
 
-<iframe id="site-frame" src="home.html?v=10" style="width:100vw; max-width:100vw; height:100%; border:none;"></iframe>
+<iframe id="site-frame" src="home.html?v=16"></iframe>
 
 <div class="global-player" id="global-player">
     <audio id="real-audio" preload="metadata"></audio>
     
-    <button class="player-nav-btn" onclick="prevTrack()" title="Предыдущий трек">◀❚</button>
-    <button class="play-circle" id="play-btn" onclick="toggleDemoPlay()">▶</button>
-    <button class="player-nav-btn" onclick="nextTrack()" title="Следующий трек">❚▶</button>
+    <button type="button" class="player-nav-btn" onclick="prevTrack()" title="Предыдущий трек">◀❚</button>
+    <button type="button" class="play-circle" id="play-btn" onclick="toggleDemoPlay()">▶</button>
+    <button type="button" class="player-nav-btn" onclick="nextTrack()" title="Следующий трек">❚▶</button>
 
     <div style="flex:1; min-width:0;">
         <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
@@ -143,6 +147,10 @@ window.addEventListener('message', function(e) {
     if (!e.data || !e.data.type) return;
     if (e.data.type === 'toggle') toggleDemoPlay();
     if (e.data.type === 'switch') switchDemoByIndex(e.data.index);
+    if (e.data.type === 'pause' && !audio.paused) {
+        audio.pause();
+        syncUI(false);
+    }
 });
 </script>
 
