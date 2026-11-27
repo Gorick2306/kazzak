@@ -1307,18 +1307,26 @@ body {
 .footer-plate {
     margin-top: auto;
 }
-/* === ПЛАВНАЯ ИНЕРЦИОННАЯ ПРОКРУТКА НА ТЕЛЕФОНАХ === */
-html, body {
-    height: auto !important;
-    min-height: 100%;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior-y: contain;
+/* === ЕДИНАЯ ПЛАВНАЯ ПРОКРУТКА НА ВСЕХ СТРАНИЦАХ === */
+html {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
 }
 
 .video-card,
 .card-link,
 .collage,
-.hero-grid {
+.hero-grid,
+.calc-box,
+.song-row,
+.calendar-grid {
     touch-action: pan-y;
 }
