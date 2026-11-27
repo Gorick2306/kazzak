@@ -2,7 +2,7 @@
 Theme Name: KAZAKK SHOW — Editorial Interactive
 Author: Gorick2306
 Description: Светлый красно-белый сайт артиста KAZAKK SHOW
-Version: 20.0
+Version: 21.0
 */
 
 @import url('https://googleapis.com');
@@ -199,6 +199,7 @@ body {
     box-shadow: 0 8px 24px rgba(185, 28, 28, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
 }
+
 .play-circle,
 .demo-chip,
 .calc-opt,
@@ -356,7 +357,6 @@ body {
     color: #fff;
     border-color: var(--red);
 }
-
 /* === КОЛЛАЖ НА ПЕРВОМ ЭКРАНЕ === */
 .collage {
     position: relative;
@@ -515,6 +515,7 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+
 .section {
     padding: 84px 0;
 }
@@ -540,6 +541,8 @@ body {
 
 .card,
 .card-link {
+    position: relative;
+    overflow: hidden;
     background: var(--bg-white);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -549,13 +552,43 @@ body {
     justify-content: space-between;
     text-decoration: none;
     color: var(--ink);
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.card-link:hover {
+.card-link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.card-link:hover::after,
+.card-link:active::after {
+    left: 140%;
+}
+
+.card-link:hover,
+.card-link:active {
     transform: translateY(-4px);
-    border-color: var(--red);
-    box-shadow: 0 14px 30px rgba(20, 20, 22, 0.08);
+    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
+    border-color: #d62424;
+    color: #ffffff;
+    box-shadow: 0 14px 34px rgba(185, 28, 28, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.card-link:hover .eyebrow,
+.card-link:hover p,
+.card-link:hover .card-cta,
+.card-link:active .eyebrow,
+.card-link:active p,
+.card-link:active .card-cta {
+    color: #ffffff !important;
 }
 
 .featured-card {
@@ -685,7 +718,6 @@ body {
     font-size: 14px;
     color: var(--muted);
 }
-
 /* === РЕПЕРТУАР, ПОИСК И СВОЯ ПЕСНЯ === */
 .rep-search-bar {
     display: flex;
@@ -1209,10 +1241,21 @@ body {
     border-top: 1px solid var(--border);
 }
 
-/* === АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ === */
+/* === АДАПТАЦИЯ И ЕДИНЫЙ БЕСШОВНЫЙ ФОН ДЛЯ СМАРТФОНОВ === */
 @media (max-width: 860px) {
     body {
-        background-attachment: scroll;
+        background-color: #fbf9f6;
+        background-image:
+            linear-gradient(180deg,
+                rgba(251, 249, 246, 0.98) 0%,
+                rgba(251, 249, 246, 0.90) 32%,
+                rgba(232, 135, 135, 0.24) 68%,
+                rgba(185, 28, 28, 0.42) 100%
+            ),
+            url('images/paper-texture.jpg');
+        background-repeat: no-repeat, repeat-y;
+        background-size: 100% 100%, 100% auto;
+        background-attachment: local, local;
     }
     .site-header {
         backdrop-filter: none;
@@ -1293,4 +1336,75 @@ body {
         right: 12px;
         bottom: 84px;
     }
+}
+/* === СКРЫТИЕ СЕРЫХ ПОЯСНЕНИЙ В ЗАГОЛОВКАХ И КАРТОЧКАХ === */
+.section-head p,
+.card-link p {
+    display: none !important;
+}
+/* === УНИВЕРСАЛЬНЫЙ КРАСНЫЙ ПЕРЕЛИВ И БЛИК ДЛЯ ВСЕХ ОСТАЛЬНЫХ КНОПОК САЙТА === */
+.player-nav-btn,
+.mobile-menu-btn,
+.mobile-drawer-close,
+.mobile-drawer-link,
+.order-song-del,
+.video-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.player-nav-btn::after,
+.mobile-menu-btn::after,
+.mobile-drawer-close::after,
+.mobile-drawer-link::after,
+.order-song-del::after,
+.video-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.52) 50%, transparent 100%);
+    transform: skewX(-25deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.player-nav-btn:hover::after,
+.player-nav-btn:active::after,
+.mobile-menu-btn:hover::after,
+.mobile-menu-btn:active::after,
+.mobile-drawer-close:hover::after,
+.mobile-drawer-close:active::after,
+.mobile-drawer-link:hover::after,
+.mobile-drawer-link:active::after,
+.order-song-del:hover::after,
+.order-song-del:active::after,
+.video-card:hover::after,
+.video-card:active::after {
+    left: 140%;
+}
+
+.player-nav-btn:hover,
+.player-nav-btn:active,
+.mobile-drawer-close:hover,
+.mobile-drawer-close:active,
+.mobile-drawer-link:hover,
+.mobile-drawer-link:active,
+.order-song-del:hover,
+.order-song-del:active {
+    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
+    border-color: #d62424 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(185, 28, 28, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn:active {
+    background: linear-gradient(135deg, #e02828 0%, #991515 100%) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    transform: scale(1.04);
 }

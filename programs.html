@@ -4,7 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Программы и смета — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="stylesheet" href="style.css?v=25">
+<style>
+.faq-item {
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+}
+.faq-item summary {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 14px 18px !important;
+    margin: -16px -20px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+.faq-item[open] summary {
+    margin-bottom: 12px !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+.faq-item summary::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -120% !important;
+    width: 70% !important;
+    height: 100% !important;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%) !important;
+    transform: skewX(-25deg) !important;
+    transition: left 0.55s ease !important;
+    pointer-events: none !important;
+}
+.faq-item summary:hover::before,
+.faq-item summary:active::before {
+    left: 140% !important;
+}
+.faq-item summary:hover,
+.faq-item summary:active {
+    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.45) !important;
+}
+.faq-item summary:hover::after,
+.faq-item summary:active::after {
+    color: #ffffff !important;
+}
+</style>
+
 </head>
 <body>
 
