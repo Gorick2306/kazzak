@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KAZAKK SHOW — Официальный сайт артиста</title>
-    <link rel="stylesheet" href="style.css?v=25">
+    <link rel="stylesheet" href="style.css?v=30">
     <style>
         html, body {
             position: fixed;
@@ -74,7 +74,11 @@ const seekBar = document.getElementById('seek-bar');
 const timeDisplay = document.getElementById('time-display');
 const frame = document.getElementById('site-frame');
 
-audio.src = playlist.file;
+if (window.name && window.name.endsWith('.html') && window.name !== 'home.html') {
+    frame.src = window.name;
+}
+
+audio.src = playlist[0].file;
 
 function formatTime(sec) {
     if (isNaN(sec)) return '0:00';
@@ -161,10 +165,11 @@ frame.addEventListener('load', () => {
                 if (!href || href.startsWith('http') || href.startsWith('#')) return;
                 ev.preventDefault();
                 const currentFile = frame.contentWindow.location.pathname.split('/').pop();
-                const targetFile = href.split('?');
+                const targetFile = href.split('?')[0];
                 if (currentFile === targetFile) {
                     doc.body.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
+                    window.name = targetFile;
                     frame.contentWindow.location.replace(href);
                 }
             });
@@ -179,6 +184,9 @@ window.addEventListener('message', function(e) {
     if (e.data.type === 'pause' && !audio.paused) {
         audio.pause();
         syncUI(false);
+    }
+    if (e.data.type === 'page' && e.data.name) {
+        window.name = e.data.name;
     }
 });
 </script>

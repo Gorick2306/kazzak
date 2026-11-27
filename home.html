@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAZAKK SHOW — Главная</title>
-    <link rel="stylesheet" href="style.css?v=25">
+    <link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
 
@@ -81,30 +81,26 @@
     <div class="container">
         <div class="section-head">
             <h2>Интерактивные возможности сайта</h2>
-            <p style="color:var(--muted); max-width:420px;">Соберите программу своего вечера за 1 минуту прямо на сайте.</p>
         </div>
         <div class="grid-3">
             <a href="programs.html" class="card-link">
                 <div>
                     <span class="eyebrow">01 / Смета онлайн</span>
-                    <h3 style="font-size:26px; margin-bottom:10px;">Калькулятор выступления</h3>
-                    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Выберите количество блоков, формат площадки и аппаратуру — система сразу покажет точную стоимость.</p>
+                    <h3 style="font-size:26px; margin-bottom:24px;">Калькулятор выступления</h3>
                 </div>
                 <span class="card-cta">Открыть калькулятор →</span>
             </a>
             <a href="repertoire.html" class="card-link">
                 <div>
                     <span class="eyebrow">02 / Трек-лист</span>
-                    <h3 style="font-size:26px; margin-bottom:10px;">Конструктор плейлиста</h3>
-                    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Отметьте любимые песни из репертуара, и они автоматически прикрепятся к вашей заявке на дату.</p>
+                    <h3 style="font-size:26px; margin-bottom:24px;">Конструктор плейлиста</h3>
                 </div>
                 <span class="card-cta">Собрать плейлист →</span>
             </a>
             <a href="contacts.html" class="card-link featured-card">
                 <div>
                     <span class="eyebrow">03 / Расписание</span>
-                    <h3 style="font-size:26px; margin-bottom:10px;">Календарь свободных дат</h3>
-                    <p style="color:var(--muted); font-size:14px; margin-bottom:24px;">Проверьте свободные пятницы и субботы сезона и забронируйте дату без предоплаты.</p>
+                    <h3 style="font-size:26px; margin-bottom:24px;">Календарь свободных дат</h3>
                 </div>
                 <span class="card-cta">Проверить календарь →</span>
             </a>
@@ -116,7 +112,6 @@
     <div class="container">
         <div class="section-head">
             <h2>Живая энергетика со сцены</h2>
-            <p style="color:var(--muted); max-width:440px;">Реальные фрагменты с корпоративов, юбилеев и свадеб — нажмите на обложку, чтобы включить видео со звуком.</p>
         </div>
 
         <div class="grid-3">
@@ -163,7 +158,6 @@
     <div class="container">
         <div class="section-head">
             <h2>Отзывы заказчиков и ведущих</h2>
-            <p style="color:var(--muted); max-width:420px;">Реальные впечатления организаторов и гостей после мероприятий.</p>
         </div>
 
         <div class="grid-3">
@@ -254,6 +248,8 @@
 </footer>
 
 <script>
+window.parent.postMessage({type:'page', name:'home.html'}, '*');
+
 function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');

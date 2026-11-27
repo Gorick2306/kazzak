@@ -4,55 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Программы и смета — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=25">
-<style>
-.faq-item {
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.3s ease !important;
-}
-.faq-item::after {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: -120% !important;
-    width: 75% !important;
-    height: 100% !important;
-    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%) !important;
-    transform: skewX(-25deg) !important;
-    transition: left 0.55s ease !important;
-    pointer-events: none !important;
-    z-index: 5 !important;
-}
-.faq-item:hover::after,
-.faq-item:active::after {
-    left: 140% !important;
-}
-.faq-item summary {
-    position: relative !important;
-    z-index: 2 !important;
-    padding: 14px 18px !important;
-    margin: -16px -20px !important;
-    border-radius: 8px !important;
-    transition: all 0.3s ease !important;
-}
-.faq-item[open] summary {
-    margin-bottom: 12px !important;
-    border-radius: 8px 8px 0 0 !important;
-}
-.faq-item summary:hover,
-.faq-item summary:active {
-    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
-    color: #ffffff !important;
-    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.45) !important;
-}
-.faq-item summary:hover::after,
-.faq-item summary:active::after {
-    color: #ffffff !important;
-}
-</style>
-
-
+    <link rel="stylesheet" href="style.css?v=30">
+    <style>
+        .faq-item {
+            position: relative !important;
+            overflow: hidden !important;
+            transition: all 0.3s ease !important;
+        }
+        .faq-item::after {
+            content: "" !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -120% !important;
+            width: 75% !important;
+            height: 100% !important;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%) !important;
+            transform: skewX(-25deg) !important;
+            transition: left 0.55s ease !important;
+            pointer-events: none !important;
+            z-index: 5 !important;
+        }
+        .faq-item:hover::after,
+        .faq-item:active::after {
+            left: 140% !important;
+        }
+        .faq-item summary {
+            position: relative !important;
+            z-index: 2 !important;
+            padding: 14px 18px !important;
+            margin: -16px -20px !important;
+            border-radius: 8px !important;
+            transition: all 0.3s ease !important;
+        }
+        .faq-item[open] summary {
+            margin-bottom: 12px !important;
+            border-radius: 8px 8px 0 0 !important;
+        }
+        .faq-item summary:hover,
+        .faq-item summary:active {
+            background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 20px rgba(185, 28, 28, 0.45) !important;
+        }
+        .faq-item summary:hover::after,
+        .faq-item summary:active::after {
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -195,6 +193,8 @@
 </footer>
 
 <script>
+window.parent.postMessage({type:'page', name:'programs.html'}, '*');
+
 function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');
@@ -234,7 +234,7 @@ function renderCalcUI() {
 function selectCalc(btn, group) {
     const buttons = Array.from(btn.parentElement.querySelectorAll('.calc-opt'));
     const idx = buttons.indexOf(btn);
-    const cleanLabel = btn.innerText.split(' (+')[0];
+    const cleanLabel = btn.innerText.split(' (+');
     state[group] = {
         price: parseInt(btn.getAttribute('data-price')),
         label: cleanLabel,

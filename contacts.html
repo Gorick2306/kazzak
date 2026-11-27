@@ -4,44 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты и дата — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=25">
-<style>
-.cal-day:not(.busy):not(.empty),
-.cal-nav-btn {
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.25s ease !important;
-}
-.cal-day:not(.busy):not(.empty)::after,
-.cal-nav-btn::after {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: -120% !important;
-    width: 75% !important;
-    height: 100% !important;
-    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%) !important;
-    transform: skewX(-25deg) !important;
-    transition: left 0.5s ease !important;
-    pointer-events: none !important;
-}
-.cal-day:not(.busy):not(.empty):hover::after,
-.cal-day:not(.busy):not(.empty):active::after,
-.cal-nav-btn:hover::after,
-.cal-nav-btn:active::after {
-    left: 140% !important;
-}
-.cal-day:not(.busy):not(.empty):hover,
-.cal-day:not(.busy):not(.empty):active,
-.cal-nav-btn:hover,
-.cal-nav-btn:active {
-    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
-    border-color: #d62424 !important;
-    color: #ffffff !important;
-    box-shadow: 0 5px 16px rgba(185, 28, 28, 0.45) !important;
-}
-</style>
-
+    <link rel="stylesheet" href="style.css?v=30">
+    <style>
+        .cal-day:not(.busy):not(.empty),
+        .cal-nav-btn {
+            position: relative !important;
+            overflow: hidden !important;
+            transition: all 0.25s ease !important;
+        }
+        .cal-day:not(.busy):not(.empty)::after,
+        .cal-nav-btn::after {
+            content: "" !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -120% !important;
+            width: 75% !important;
+            height: 100% !important;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%) !important;
+            transform: skewX(-25deg) !important;
+            transition: left 0.5s ease !important;
+            pointer-events: none !important;
+        }
+        .cal-day:not(.busy):not(.empty):hover::after,
+        .cal-day:not(.busy):not(.empty):active::after,
+        .cal-nav-btn:hover::after,
+        .cal-nav-btn:active::after {
+            left: 140% !important;
+        }
+        .cal-day:not(.busy):not(.empty):hover,
+        .cal-day:not(.busy):not(.empty):active,
+        .cal-nav-btn:hover,
+        .cal-nav-btn:active {
+            background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
+            border-color: #d62424 !important;
+            color: #ffffff !important;
+            box-shadow: 0 5px 16px rgba(185, 28, 28, 0.45) !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -168,6 +167,8 @@
     </div>
 </footer>
 <script>
+window.parent.postMessage({type:'page', name:'contacts.html'}, '*');
+
 function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');

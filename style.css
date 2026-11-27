@@ -2,7 +2,7 @@
 Theme Name: KAZAKK SHOW — Editorial Interactive
 Author: Gorick2306
 Description: Светлый красно-белый сайт артиста KAZAKK SHOW
-Version: 21.0
+Version: 30.0
 */
 
 @import url('https://googleapis.com');
@@ -516,6 +516,7 @@ body {
     cursor: pointer;
 }
 
+/* === СЕКЦИИ И КАРТОЧКИ С КРАСНЫМ ПЕРЕЛИВОМ === */
 .section {
     padding: 84px 0;
 }
@@ -531,6 +532,11 @@ body {
 .section-head h2 {
     font-size: clamp(28px, 3.4vw, 40px);
     text-transform: uppercase;
+}
+
+.section-head p,
+.card-link p {
+    display: none !important;
 }
 
 .grid-3 {
@@ -560,7 +566,7 @@ body {
     position: absolute;
     top: 0;
     left: -120%;
-    width: 70%;
+    width: 75%;
     height: 100%;
     background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
     transform: skewX(-25deg);
@@ -577,16 +583,14 @@ body {
 .card-link:active {
     transform: translateY(-4px);
     background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
-    border-color: #d62424;
-    color: #ffffff;
+    border-color: #d62424 !important;
+    color: #ffffff !important;
     box-shadow: 0 14px 34px rgba(185, 28, 28, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .card-link:hover .eyebrow,
-.card-link:hover p,
 .card-link:hover .card-cta,
 .card-link:active .eyebrow,
-.card-link:active p,
 .card-link:active .card-cta {
     color: #ffffff !important;
 }
@@ -868,10 +872,6 @@ body {
     padding: 2px 6px;
 }
 
-.order-song-del:hover {
-    color: var(--red);
-}
-
 /* === ФОРМА ЗАЯВКИ И МОДАЛКА === */
 .form-2col {
     display: grid;
@@ -938,7 +938,7 @@ body {
     border-radius: 10px;
     border-top: 5px solid var(--red);
 }
-/* === ПОДВАЛ (КРАСНЫЙ ФОН ДО САМОГО НИЗА ЭКРАНА БЕЗ ЗАЗОРА) === */
+/* === ПОДВАЛ (ДО САМОГО НИЗА ЭКРАНА БЕЗ ЗАЗОРА) === */
 .footer-plate {
     background: linear-gradient(135deg, #c81e1e 0%, #8e0d18 100%);
     color: #ffffff;
@@ -994,7 +994,7 @@ body {
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
-/* === ГЛОБАЛЬНЫЙ ПЛЕЕР (ВНИЗУ ЭКРАНА) === */
+/* === ГЛОБАЛЬНЫЙ ПЛЕЕР === */
 .global-player {
     position: fixed;
     left: 24px;
@@ -1025,12 +1025,6 @@ body {
     color: var(--ink);
     cursor: pointer;
     flex-shrink: 0;
-}
-
-.player-nav-btn:hover {
-    background: var(--red);
-    color: #fff;
-    border-color: var(--red);
 }
 
 .player-seek {
@@ -1113,11 +1107,6 @@ body {
     cursor: default;
 }
 
-.cal-day:not(.busy):not(.empty):hover {
-    border-color: var(--red);
-    color: var(--red);
-}
-
 .cal-day.busy {
     background: #fee2e2;
     color: #b91c1c;
@@ -1127,13 +1116,79 @@ body {
 }
 
 .cal-day.selected {
-    background: var(--red);
-    color: #fff;
-    border-color: var(--red);
-    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.35);
+    background: linear-gradient(135deg, #cc2222 0%, #991515 100%) !important;
+    color: #ffffff !important;
+    border-color: #991515 !important;
+    box-shadow: 0 6px 18px rgba(185, 28, 28, 0.48), inset 0 1px 1px rgba(255, 255, 255, 0.45);
 }
 
-/* === МОБИЛЬНОЕ БОКОВОЕ МЕНЮ (ВЫДВИЖНАЯ ПАНЕЛЬ) === */
+/* === УНИВЕРСАЛЬНЫЙ КРАСНЫЙ ПЕРЕЛИВ И БЛИК ДЛЯ ВСЕХ ОСТАЛЬНЫХ КНОПОК === */
+.player-nav-btn,
+.mobile-menu-btn,
+.mobile-drawer-close,
+.mobile-drawer-link,
+.order-song-del,
+.video-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.player-nav-btn::after,
+.mobile-menu-btn::after,
+.mobile-drawer-close::after,
+.mobile-drawer-link::after,
+.order-song-del::after,
+.video-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+    transform: skewX(-25deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.player-nav-btn:hover::after,
+.player-nav-btn:active::after,
+.mobile-menu-btn:hover::after,
+.mobile-menu-btn:active::after,
+.mobile-drawer-close:hover::after,
+.mobile-drawer-close:active::after,
+.mobile-drawer-link:hover::after,
+.mobile-drawer-link:active::after,
+.order-song-del:hover::after,
+.order-song-del:active::after,
+.video-card:hover::after,
+.video-card:active::after {
+    left: 140%;
+}
+
+.player-nav-btn:hover,
+.player-nav-btn:active,
+.mobile-drawer-close:hover,
+.mobile-drawer-close:active,
+.mobile-drawer-link:hover,
+.mobile-drawer-link:active,
+.order-song-del:hover,
+.order-song-del:active {
+    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
+    border-color: #d62424 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(185, 28, 28, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn:active {
+    background: linear-gradient(135deg, #e02828 0%, #991515 100%) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    transform: scale(1.04);
+}
+/* === МОБИЛЬНОЕ БОКОВОЕ МЕНЮ === */
 .mobile-menu-btn {
     display: none;
     background: var(--red);
@@ -1241,7 +1296,7 @@ body {
     border-top: 1px solid var(--border);
 }
 
-/* === АДАПТАЦИЯ И ЕДИНЫЙ БЕСШОВНЫЙ ФОН ДЛЯ СМАРТФОНОВ === */
+/* === АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ (ЕДИНЫЙ ПЛАВНЫЙ ФОН) === */
 @media (max-width: 860px) {
     body {
         background-color: #fbf9f6;
@@ -1336,75 +1391,4 @@ body {
         right: 12px;
         bottom: 84px;
     }
-}
-/* === СКРЫТИЕ СЕРЫХ ПОЯСНЕНИЙ В ЗАГОЛОВКАХ И КАРТОЧКАХ === */
-.section-head p,
-.card-link p {
-    display: none !important;
-}
-/* === УНИВЕРСАЛЬНЫЙ КРАСНЫЙ ПЕРЕЛИВ И БЛИК ДЛЯ ВСЕХ ОСТАЛЬНЫХ КНОПОК САЙТА === */
-.player-nav-btn,
-.mobile-menu-btn,
-.mobile-drawer-close,
-.mobile-drawer-link,
-.order-song-del,
-.video-card {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.player-nav-btn::after,
-.mobile-menu-btn::after,
-.mobile-drawer-close::after,
-.mobile-drawer-link::after,
-.order-song-del::after,
-.video-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 75%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.52) 50%, transparent 100%);
-    transform: skewX(-25deg);
-    transition: left 0.55s ease;
-    pointer-events: none;
-    z-index: 3;
-}
-
-.player-nav-btn:hover::after,
-.player-nav-btn:active::after,
-.mobile-menu-btn:hover::after,
-.mobile-menu-btn:active::after,
-.mobile-drawer-close:hover::after,
-.mobile-drawer-close:active::after,
-.mobile-drawer-link:hover::after,
-.mobile-drawer-link:active::after,
-.order-song-del:hover::after,
-.order-song-del:active::after,
-.video-card:hover::after,
-.video-card:active::after {
-    left: 140%;
-}
-
-.player-nav-btn:hover,
-.player-nav-btn:active,
-.mobile-drawer-close:hover,
-.mobile-drawer-close:active,
-.mobile-drawer-link:hover,
-.mobile-drawer-link:active,
-.order-song-del:hover,
-.order-song-del:active {
-    background: linear-gradient(135deg, #d62424 0%, #9e141f 100%) !important;
-    border-color: #d62424 !important;
-    color: #ffffff !important;
-    box-shadow: 0 6px 18px rgba(185, 28, 28, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-}
-
-.mobile-menu-btn:hover,
-.mobile-menu-btn:active {
-    background: linear-gradient(135deg, #e02828 0%, #991515 100%) !important;
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-    transform: scale(1.04);
 }
