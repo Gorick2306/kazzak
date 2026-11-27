@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAZAKK SHOW — Главная</title>
-    <link rel="stylesheet" href="style.css?v=6">
-
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -20,8 +19,27 @@
             <a href="repertoire.html" class="nav-link">Репертуар</a>
             <a href="contacts.html" class="btn btn-red">Проверить дату</a>
         </div>
+        <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
     </div>
 </header>
+
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="closeMobileDrawer()"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-head">
+        <span class="center-brand" style="padding:0; font-size:22px;">KAZAKK <span>SHOW</span></span>
+        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
+    </div>
+    <nav class="mobile-drawer-links">
+        <a href="home.html" class="mobile-drawer-link">01. Главная</a>
+        <a href="programs.html" class="mobile-drawer-link">02. Программы и смета</a>
+        <a href="repertoire.html" class="mobile-drawer-link">03. Конструктор репертуара</a>
+        <a href="contacts.html" class="mobile-drawer-link accent">04. Календарь дат и заявка →</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+        Живой вокал • Корпоративы • Юбилеи<br>
+        <strong>+7 (900) 000-00-00</strong>
+    </div>
+</aside>
 
 <section class="hero">
     <div class="container hero-grid">
@@ -35,23 +53,22 @@
             </div>
 
             <div class="demo-player" id="demo-player">
-    <div class="player-top">
-        <button class="play-circle" id="play-btn-hero" onclick="window.parent.postMessage({type:'toggle'}, '*')">▶</button>
-        <div style="flex:1;">
-            <div style="font-size:12px; color:var(--red); font-weight:700; text-transform:uppercase;">Живое демо-исполнение</div>
-            <strong id="demo-title-hero" style="font-size:15px;">Танцевальный поп-хит (Live)</strong>
-        </div>
-        <div class="eq-bars">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="demo-tracks">
-        <button class="demo-chip active" onclick="window.parent.postMessage({type:'switch', index:0}, '*')">Поп-драйв</button>
-        <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:1}, '*')">Хиты 90-х</button>
-        <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:2}, '*')">Лирика / Лаунж</button>
-    </div>
-</div>
-
+                <div class="player-top">
+                    <button class="play-circle" id="play-btn-hero" onclick="window.parent.postMessage({type:'toggle'}, '*')">▶</button>
+                    <div style="flex:1;">
+                        <div style="font-size:12px; color:var(--red); font-weight:700; text-transform:uppercase;">Живое демо-исполнение</div>
+                        <strong id="demo-title-hero" style="font-size:15px;">Танцевальный поп-хит (Live)</strong>
+                    </div>
+                    <div class="eq-bars">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="demo-tracks">
+                    <button class="demo-chip active" onclick="window.parent.postMessage({type:'switch', index:0}, '*')">Поп-драйв</button>
+                    <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:1}, '*')">Хиты 90-х</button>
+                    <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:2}, '*')">Лирика / Лаунж</button>
+                </div>
+            </div>
         </div>
 
         <div class="collage">
@@ -138,13 +155,21 @@
 </footer>
 
 <script>
+function openMobileDrawer() {
+    document.getElementById('mobile-drawer').classList.add('open');
+    document.getElementById('mobile-drawer-overlay').classList.add('open');
+}
+function closeMobileDrawer() {
+    document.getElementById('mobile-drawer').classList.remove('open');
+    document.getElementById('mobile-drawer-overlay').classList.remove('open');
+}
+
 const saved = JSON.parse(localStorage.getItem('artist_playlist') || '[]');
 if (saved.length > 0) {
     document.getElementById('playlist-count').innerText = saved.length;
     document.getElementById('playlist-bar').classList.add('visible');
 }
-</script>
-<script>
+
 window.addEventListener('message', function(e) {
     if (!e.data || e.data.type !== 'sync') return;
     const heroBox = document.getElementById('demo-player');

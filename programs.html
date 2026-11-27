@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Программы и смета — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=6">
-
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -20,8 +19,27 @@
             <a href="repertoire.html" class="nav-link">Репертуар</a>
             <a href="contacts.html" class="btn btn-red">Проверить дату</a>
         </div>
+        <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
     </div>
 </header>
+
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="closeMobileDrawer()"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-head">
+        <span class="center-brand" style="padding:0; font-size:22px;">KAZAKK <span>SHOW</span></span>
+        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
+    </div>
+    <nav class="mobile-drawer-links">
+        <a href="home.html" class="mobile-drawer-link">01. Главная</a>
+        <a href="programs.html" class="mobile-drawer-link">02. Программы и смета</a>
+        <a href="repertoire.html" class="mobile-drawer-link">03. Конструктор репертуара</a>
+        <a href="contacts.html" class="mobile-drawer-link accent">04. Календарь дат и заявка →</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+        Живой вокал • Корпоративы • Юбилеи<br>
+        <strong>+7 (900) 000-00-00</strong>
+    </div>
+</aside>
 
 <section class="section">
     <div class="container">
@@ -84,29 +102,57 @@
 </footer>
 
 <script>
-let state = {
-    blocks: { price: 15000, label: '1 блок (45 мин)' },
-    sound: { price: 0, label: 'Аппаратура площадки' },
-    extra: { price: 0, label: 'Только вокал' }
+function openMobileDrawer() {
+    document.getElementById('mobile-drawer').classList.add('open');
+    document.getElementById('mobile-drawer-overlay').classList.add('open');
+}
+function closeMobileDrawer() {
+    document.getElementById('mobile-drawer').classList.remove('open');
+    document.getElementById('mobile-drawer-overlay').classList.remove('open');
+}
+
+let state = JSON.parse(localStorage.getItem('artist_calc_state') || 'null') || {
+    blocks: { price: 15000, label: '1 блок (45 мин)', index: 0 },
+    sound: { price: 0, label: 'Аппаратура площадки', index: 0 },
+    extra: { price: 0, label: 'Только вокал', index: 0 }
 };
 
+function renderCalcUI() {
+    document.querySelectorAll('.calc-group').forEach((groupEl, gIdx) => {
+        const key = gIdx === 0 ? 'blocks' : (gIdx === 1 ? 'sound' : 'extra');
+        const buttons = groupEl.querySelectorAll('.calc-opt');
+        buttons.forEach((b, bIdx) => {
+            b.classList.toggle('active', bIdx === state[key].index);
+        });
+    });
+
+    const total = state.blocks.price + state.sound.price + state.extra.price;
+    const totalStr = total.toLocaleString('ru-RU') + ' ₽';
+    const descStr = state.blocks.label + ' • ' + state.sound.label + ' • ' + state.extra.label;
+
+    document.getElementById('calc-total').innerText = totalStr;
+    document.getElementById('calc-desc').innerText = descStr;
+
+    localStorage.setItem('artist_calc_state', JSON.stringify(state));
+    localStorage.setItem('artist_estimate', 'Расчёт сметы: ' + totalStr + ' (' + descStr + ')');
+}
+
 function selectCalc(btn, group) {
-    btn.parentElement.querySelectorAll('.calc-opt').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    const buttons = Array.from(btn.parentElement.querySelectorAll('.calc-opt'));
+    const idx = buttons.indexOf(btn);
     state[group] = {
         price: parseInt(btn.getAttribute('data-price')),
-        label: btn.innerText.split(' (+')
+        label: btn.innerText.split(' (+')[0],
+        index: idx
     };
-    const total = state.blocks.price + state.sound.price + state.extra.price;
-    document.getElementById('calc-total').innerText = total.toLocaleString('ru-RU') + ' ₽';
-    document.getElementById('calc-desc').innerText = state.blocks.label + ' • ' + state.sound.label + ' • ' + state.extra.label;
+    renderCalcUI();
 }
 
 function saveEstimate() {
-    const total = document.getElementById('calc-total').innerText;
-    const desc = document.getElementById('calc-desc').innerText;
-    localStorage.setItem('artist_estimate', 'Расчёт сметы: ' + total + ' (' + desc + ')');
+    renderCalcUI();
 }
+
+renderCalcUI();
 
 const saved = JSON.parse(localStorage.getItem('artist_playlist') || '[]');
 if (saved.length > 0) {
