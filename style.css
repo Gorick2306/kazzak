@@ -1307,26 +1307,17 @@ body {
 .footer-plate {
     margin-top: auto;
 }
-/* === ЕДИНАЯ ПЛАВНАЯ ПРОКРУТКА НА ВСЕХ СТРАНИЦАХ === */
-html {
+/* === ЧИСТАЯ МОБИЛЬНАЯ ПРОКРУТКА БЕЗ РЫВКОВ === */
+html, body {
     height: auto;
+    min-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
 
-body {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
-}
-
-.video-card,
-.card-link,
-.collage,
-.hero-grid,
-.calc-box,
-.song-row,
-.calendar-grid {
-    touch-action: pan-y;
+@media (max-width: 860px) {
+    body {
+        background-attachment: scroll;
+    }
 }
