@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAZAKK SHOW — Главная</title>
-    <link rel="stylesheet" href="style.css?v=15">
+    <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
 
@@ -72,11 +72,11 @@
         </div>
 
         <div class="collage">
-    <img class="collage-main" src="images/artist-1.jpg" alt="Вокалист KAZAKK SHOW на сцене">
-    <img class="collage-sub" src="images/artist-2.jpg" alt="Выступление KAZAKK SHOW на корпоративе">
-</div>
-
+            <img class="collage-main" src="images/artist-1.jpg" alt="Вокалист KAZAKK SHOW на сцене">
+            <img class="collage-sub" src="images/artist-2.jpg" alt="Выступление KAZAKK SHOW на корпоративе">
+        </div>
     </div>
+</section>
 <section class="section">
     <div class="container">
         <div class="section-head">
@@ -254,6 +254,10 @@
 </footer>
 
 <script>
+document.documentElement.style.overflowY = 'auto';
+document.body.style.overflowY = 'auto';
+document.body.style.height = 'auto';
+
 function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');
