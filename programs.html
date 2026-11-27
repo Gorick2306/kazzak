@@ -11,11 +11,26 @@
     overflow: hidden !important;
     transition: all 0.3s ease !important;
 }
+.faq-item::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -120% !important;
+    width: 75% !important;
+    height: 100% !important;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%) !important;
+    transform: skewX(-25deg) !important;
+    transition: left 0.55s ease !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+}
+.faq-item:hover::after,
+.faq-item:active::after {
+    left: 140% !important;
+}
 .faq-item summary {
-    -webkit-appearance: none !important;
-    appearance: none !important;
     position: relative !important;
-    overflow: hidden !important;
+    z-index: 2 !important;
     padding: 14px 18px !important;
     margin: -16px -20px !important;
     border-radius: 8px !important;
@@ -24,22 +39,6 @@
 .faq-item[open] summary {
     margin-bottom: 12px !important;
     border-radius: 8px 8px 0 0 !important;
-}
-.faq-item summary::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: -120% !important;
-    width: 70% !important;
-    height: 100% !important;
-    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%) !important;
-    transform: skewX(-25deg) !important;
-    transition: left 0.55s ease !important;
-    pointer-events: none !important;
-}
-.faq-item summary:hover::before,
-.faq-item summary:active::before {
-    left: 140% !important;
 }
 .faq-item summary:hover,
 .faq-item summary:active {
@@ -52,6 +51,7 @@
     color: #ffffff !important;
 }
 </style>
+
 
 </head>
 <body>
