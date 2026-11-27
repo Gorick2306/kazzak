@@ -1307,17 +1307,28 @@ body {
 .footer-plate {
     margin-top: auto;
 }
-/* === ЧИСТАЯ МОБИЛЬНАЯ ПРОКРУТКА БЕЗ РЫВКОВ === */
-html, body {
-    height: auto;
-    min-height: 100%;
+/* === ИДЕАЛЬНАЯ ИНЕРЦИОННАЯ ПРОКРУТКА С ПЕРВОГО СВАЙПА === */
+html {
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+body {
+    min-height: 100%;
+    height: auto;
+    overflow: visible;
+    touch-action: pan-y;
 }
 
 @media (max-width: 860px) {
     body {
         background-attachment: scroll;
     }
+    .site-header {
+        backdrop-filter: none;
+        background: #fbf9f6;
+    }
 }
+
