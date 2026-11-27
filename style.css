@@ -2,7 +2,7 @@
 Theme Name: KAZAKK SHOW — Editorial Interactive
 Author: Gorick2306
 Description: Светлый красно-белый сайт артиста KAZAKK SHOW
-Version: 15.0
+Version: 20.0
 */
 
 @import url('https://googleapis.com');
@@ -24,13 +24,22 @@ Version: 15.0
     padding: 0;
 }
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-
 body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    padding: 0;
     font-family: 'Manrope', sans-serif;
     background-color: #fbf9f6;
     background-image:
@@ -348,7 +357,7 @@ body {
     border-color: var(--red);
 }
 
-/* === КОЛЛАЖ НА ПЕРВОМ ЭКРАНЕ (БЕЗ РАМОК) === */
+/* === КОЛЛАЖ НА ПЕРВОМ ЭКРАНЕ === */
 .collage {
     position: relative;
     width: 100%;
@@ -379,19 +388,9 @@ body {
     border: 2px solid #141416;
     border-radius: 8px;
     box-shadow: 0 18px 40px rgba(20, 20, 22, 0.24);
-    -webkit-mask-image: none;
-    mask-image: none;
 }
 
-/* === ОСТАЛЬНЫЕ ФОТОГРАФИИ (БЕЗ РАМОК И ОРЕОЛА, ВО ВЕСЬ РОСТ ПО ЦЕНТРУ) === */
-.blend-gallery-2 {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 460px));
-    justify-content: center;
-    gap: 32px;
-    align-items: start;
-}
-
+/* === ОСТАЛЬНЫЕ ФОТОГРАФИИ (БЕЗ РАМОК И ОРЕОЛА, ВО ВЕСЬ РОСТ) === */
 .blend-photo-box {
     position: relative;
     width: 100%;
@@ -907,8 +906,7 @@ body {
     border-radius: 10px;
     border-top: 5px solid var(--red);
 }
-/* === ПОДВАЛ (ДО САМОГО НИЗА ЭКРАНА БЕЗ ЗАЗОРА ФОНА) === */
-/* === ПОДВАЛ (ПЕРЕКРЫВАЕТ ЛЮБОЙ ЗАЗОР СНИЗУ) === */
+/* === ПОДВАЛ (КРАСНЫЙ ФОН ДО САМОГО НИЗА ЭКРАНА БЕЗ ЗАЗОРА) === */
 .footer-plate {
     background: linear-gradient(135deg, #c81e1e 0%, #8e0d18 100%);
     color: #ffffff;
@@ -1213,6 +1211,13 @@ body {
 
 /* === АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ === */
 @media (max-width: 860px) {
+    body {
+        background-attachment: scroll;
+    }
+    .site-header {
+        backdrop-filter: none;
+        background: #fbf9f6;
+    }
     .nav-left,
     .nav-right {
         display: none !important;
@@ -1234,15 +1239,11 @@ body {
         grid-template-columns: 1fr;
         gap: 32px;
     }
-        .collage {
+    .collage {
         min-height: 360px;
     }
-
-    .blend-gallery-2,
     .custom-song-box {
         grid-template-columns: 1fr;
-    }
-    .custom-song-box {
         padding: 20px 16px;
     }
     .section {
@@ -1269,7 +1270,7 @@ body {
         font-size: 12px;
     }
     .footer-plate {
-        padding-bottom: 125px;
+        padding-bottom: 180px;
     }
     .footer-giant-title {
         font-size: clamp(34px, 9.2vw, 56px);
@@ -1293,42 +1294,3 @@ body {
         bottom: 84px;
     }
 }
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-plate {
-    margin-top: auto;
-}
-/* === ИДЕАЛЬНАЯ ИНЕРЦИОННАЯ ПРОКРУТКА С ПЕРВОГО СВАЙПА === */
-html {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-body {
-    min-height: 100%;
-    height: auto;
-    overflow: visible;
-    touch-action: pan-y;
-}
-
-@media (max-width: 860px) {
-    body {
-        background-attachment: scroll;
-    }
-    .site-header {
-        backdrop-filter: none;
-        background: #fbf9f6;
-    }
-}
-

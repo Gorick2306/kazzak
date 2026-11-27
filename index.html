@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KAZAKK SHOW — Официальный сайт артиста</title>
-    <link rel="stylesheet" href="style.css?v=18">
-            <style>
+    <link rel="stylesheet" href="style.css?v=20">
+    <style>
         html, body {
             position: fixed;
             inset: 0;
@@ -31,12 +31,10 @@
             -webkit-overflow-scrolling: touch;
         }
     </style>
-
-
 </head>
 <body>
 
-<iframe id="site-frame" src="home.html?v=18"></iframe>
+<iframe id="site-frame" src="home.html"></iframe>
 
 <div class="global-player" id="global-player">
     <audio id="real-audio" preload="metadata"></audio>
@@ -76,7 +74,7 @@ const seekBar = document.getElementById('seek-bar');
 const timeDisplay = document.getElementById('time-display');
 const frame = document.getElementById('site-frame');
 
-audio.src = playlist[0].file;
+audio.src = playlist.file;
 
 function formatTime(sec) {
     if (isNaN(sec)) return '0:00';
@@ -148,7 +146,31 @@ audio.addEventListener('timeupdate', () => {
 });
 
 audio.addEventListener('ended', () => nextTrack());
-frame.addEventListener('load', () => syncUI(!audio.paused));
+
+frame.addEventListener('load', () => {
+    syncUI(!audio.paused);
+    try {
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        if (doc && doc.body) {
+            doc.body.scrollTop = 0;
+            doc.body.focus();
+        }
+        doc.querySelectorAll('a[href]').forEach(function(link) {
+            link.addEventListener('click', function(ev) {
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('http') || href.startsWith('#')) return;
+                ev.preventDefault();
+                const currentFile = frame.contentWindow.location.pathname.split('/').pop();
+                const targetFile = href.split('?');
+                if (currentFile === targetFile) {
+                    doc.body.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    frame.contentWindow.location.replace(href);
+                }
+            });
+        });
+    } catch (err) {}
+});
 
 window.addEventListener('message', function(e) {
     if (!e.data || !e.data.type) return;
