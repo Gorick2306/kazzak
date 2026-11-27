@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Репертуар — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <a href="repertoire.html" class="nav-link">Репертуар</a>
             <a href="contacts.html" class="btn btn-red">Проверить дату</a>
         </div>
-        <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
+        <button type="button" class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
     </div>
 </header>
 
@@ -27,7 +27,7 @@
 <aside class="mobile-drawer" id="mobile-drawer">
     <div class="mobile-drawer-head">
         <span class="center-brand" style="padding:0; font-size:22px;">KAZAKK <span>SHOW</span></span>
-        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
+        <button type="button" class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
     </div>
     <nav class="mobile-drawer-links">
         <a href="home.html" class="mobile-drawer-link">01. Главная</a>
@@ -43,38 +43,61 @@
 
 <section class="section">
     <div class="container">
-        <span class="eyebrow">Конструктор программы</span>
-        <h1 style="font-size: 46px; margin-bottom: 14px;">Соберите плейлист вашего вечера</h1>
-        <p style="color: var(--muted); max-width: 600px; margin-bottom: 36px;">Нажмите «+ В мой вечер» напротив любимых песен — они сохранятся в вашу подборку и автоматически прикрепятся при бронировании даты.</p>
+        <div class="hero-grid" style="align-items: center; margin-bottom: 40px;">
+            <div>
+                <span class="eyebrow">Конструктор программы</span>
+                <h1 style="font-size: 46px; margin-bottom: 14px;">Соберите плейлист вашего вечера</h1>
+                <p style="color: var(--muted); max-width: 560px; margin-bottom: 22px;">Нажмите «+ В мой вечер» напротив любимых песен — они сохранятся в вашу подборку и автоматически прикрепятся при бронировании даты.</p>
 
-        <div class="grid-3">
+                <div class="rep-search-bar">
+                    <input type="text" id="song-search-input" placeholder="Поиск по названию песни или артисту..." oninput="filterSongs()">
+                    <button type="button" class="btn btn-outline" onclick="clearAllSongs()" style="padding: 11px 16px; font-size: 12px;">Очистить список</button>
+                </div>
+            </div>
+
+            <div class="blend-photo-box">
+                <img src="images/artist-5.jpg" alt="Живой вокал и работа с залом KAZAKK SHOW">
+            </div>
+        </div>
+        <div class="grid-3" id="songs-grid">
             <div>
                 <h3 style="font-size:22px; margin-bottom:14px;">Танцевальный поп</h3>
-                <div class="song-row"><span>Zivert — Life</span><button class="song-add" data-song="Zivert — Life" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Дима Билан — Молния</span><button class="song-add" data-song="Дима Билан — Молния" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Макс Барских — Туманы</span><button class="song-add" data-song="Макс Барских — Туманы" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>The Weeknd — Blinding Lights</span><button class="song-add" data-song="The Weeknd — Blinding Lights" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Zivert — Life</span><button type="button" class="song-add" data-song="Zivert — Life" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Дима Билан — Молния</span><button type="button" class="song-add" data-song="Дима Билан — Молния" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Макс Барских — Туманы</span><button type="button" class="song-add" data-song="Макс Барских — Туманы" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>The Weeknd — Blinding Lights</span><button type="button" class="song-add" data-song="The Weeknd — Blinding Lights" onclick="toggleSong(this)">+ В мой вечер</button></div>
             </div>
 
             <div>
                 <h3 style="font-size:22px; margin-bottom:14px;">Золотые 90-е и 2000-е</h3>
-                <div class="song-row"><span>Руки Вверх — Крошка моя</span><button class="song-add" data-song="Руки Вверх — Крошка моя" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Звери — Районы-кварталы</span><button class="song-add" data-song="Звери — Районы-кварталы" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Леонид Агутин — На сиреневой луне</span><button class="song-add" data-song="Леонид Агутин — На сиреневой луне" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Браво — Московский бит</span><button class="song-add" data-song="Браво — Московский бит" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Руки Вверх — Крошка моя</span><button type="button" class="song-add" data-song="Руки Вверх — Крошка моя" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Звери — Районы-кварталы</span><button type="button" class="song-add" data-song="Звери — Районы-кварталы" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Леонид Агутин — На сиреневой луне</span><button type="button" class="song-add" data-song="Леонид Агутин — На сиреневой луне" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Браво — Московский бит</span><button type="button" class="song-add" data-song="Браво — Московский бит" onclick="toggleSong(this)">+ В мой вечер</button></div>
             </div>
 
             <div>
                 <h3 style="font-size:22px; margin-bottom:14px;">Рок и баллады</h3>
-                <div class="song-row"><span>Кино — Группа крови</span><button class="song-add" data-song="Кино — Группа крови" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Мумий Тролль — Владивосток 2000</span><button class="song-add" data-song="Мумий Тролль — Владивосток 2000" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Баста — Сансара</span><button class="song-add" data-song="Баста — Сансара" onclick="toggleSong(this)">+ В мой вечер</button></div>
-                <div class="song-row"><span>Bryan Adams — Everything I Do</span><button class="song-add" data-song="Bryan Adams — Everything I Do" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Кино — Группа крови</span><button type="button" class="song-add" data-song="Кино — Группа крови" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Мумий Тролль — Владивосток 2000</span><button type="button" class="song-add" data-song="Мумий Тролль — Владивосток 2000" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Баста — Сансара</span><button type="button" class="song-add" data-song="Баста — Сансара" onclick="toggleSong(this)">+ В мой вечер</button></div>
+                <div class="song-row"><span>Bryan Adams — Everything I Do</span><button type="button" class="song-add" data-song="Bryan Adams — Everything I Do" onclick="toggleSong(this)">+ В мой вечер</button></div>
+            </div>
+        </div>
+
+        <div class="custom-song-box">
+            <div>
+                <span class="eyebrow" style="margin-bottom:6px;">Индивидуальное пожелание</span>
+                <h3 style="font-size:24px; margin-bottom:6px;">Не нашли любимую песню в списке?</h3>
+                <p style="font-size:14px; color:var(--muted);">Впишите исполнителя и название — мы добавим её в ваш вечер и подготовим специально к празднику.</p>
+            </div>
+            <div class="custom-song-form">
+                <input type="text" id="custom-song-input" placeholder="Например: Валерий Меладзе — Салют, Вера">
+                <button type="button" class="btn btn-red" onclick="addCustomSong()">+ Добавить в мой вечер</button>
             </div>
         </div>
     </div>
 </section>
-
 <div class="playlist-bar" id="playlist-bar">
     <span>Выбрано песен в программу вечера: <strong id="playlist-count">0</strong></span>
     <a href="contacts.html" class="btn btn-red" style="padding: 9px 18px;">Передать в заявку →</a>
@@ -82,6 +105,15 @@
 
 <footer class="footer-plate">
     <div class="container">
+        <div class="footer-top">
+            <div style="font-size: 14px; font-weight: 600;">Живой вокал и музыкальное сопровождение мероприятий</div>
+            <div class="footer-links">
+                <a href="home.html">Главная</a>
+                <a href="programs.html">Калькулятор сметы</a>
+                <a href="repertoire.html">Конструктор плейлиста</a>
+                <a href="contacts.html">Календарь дат</a>
+            </div>
+        </div>
         <div class="footer-giant-title">KAZAKK SHOW</div>
         <div style="display:flex; justify-content:space-between; font-size:13px; opacity:0.85; flex-wrap:wrap; gap:10px;">
             <span>© 2026 KAZAKK SHOW</span>
@@ -95,19 +127,21 @@ function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');
 }
+
 function closeMobileDrawer() {
     document.getElementById('mobile-drawer').classList.remove('open');
     document.getElementById('mobile-drawer-overlay').classList.remove('open');
 }
 
 let savedSongs = JSON.parse(localStorage.getItem('artist_playlist') || '[]');
+
 function updatePlaylistUI() {
     document.getElementById('playlist-count').innerText = savedSongs.length;
     const bar = document.getElementById('playlist-bar');
     if (savedSongs.length > 0) bar.classList.add('visible');
     else bar.classList.remove('visible');
 
-    document.querySelectorAll('.song-add').forEach(btn => {
+    document.querySelectorAll('.song-add').forEach(function(btn) {
         const title = btn.getAttribute('data-song');
         if (savedSongs.includes(title)) {
             btn.classList.add('added');
@@ -118,13 +152,46 @@ function updatePlaylistUI() {
         }
     });
 }
+
 function toggleSong(btn) {
     const title = btn.getAttribute('data-song');
-    if (savedSongs.includes(title)) savedSongs = savedSongs.filter(s => s !== title);
-    else savedSongs.push(title);
+    if (savedSongs.includes(title)) {
+        savedSongs = savedSongs.filter(function(s) { return s !== title; });
+    } else {
+        savedSongs.push(title);
+    }
     localStorage.setItem('artist_playlist', JSON.stringify(savedSongs));
     updatePlaylistUI();
 }
+
+function addCustomSong() {
+    const input = document.getElementById('custom-song-input');
+    const val = input.value.trim();
+    if (!val) return;
+
+    const customTitle = val + ' (пожелание гостя)';
+    if (!savedSongs.includes(customTitle)) {
+        savedSongs.push(customTitle);
+        localStorage.setItem('artist_playlist', JSON.stringify(savedSongs));
+        updatePlaylistUI();
+    }
+    input.value = '';
+}
+
+function clearAllSongs() {
+    savedSongs = [];
+    localStorage.setItem('artist_playlist', JSON.stringify(savedSongs));
+    updatePlaylistUI();
+}
+
+function filterSongs() {
+    const query = document.getElementById('song-search-input').value.toLowerCase().trim();
+    document.querySelectorAll('.song-row').forEach(function(row) {
+        const text = row.querySelector('span').innerText.toLowerCase();
+        row.style.display = text.includes(query) ? 'flex' : 'none';
+    });
+}
+
 updatePlaylistUI();
 </script>
 </body>

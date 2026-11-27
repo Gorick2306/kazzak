@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Программы и смета — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <a href="repertoire.html" class="nav-link">Репертуар</a>
             <a href="contacts.html" class="btn btn-red">Проверить дату</a>
         </div>
-        <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
+        <button type="button" class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
     </div>
 </header>
 
@@ -27,7 +27,7 @@
 <aside class="mobile-drawer" id="mobile-drawer">
     <div class="mobile-drawer-head">
         <span class="center-brand" style="padding:0; font-size:22px;">KAZAKK <span>SHOW</span></span>
-        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
+        <button type="button" class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
     </div>
     <nav class="mobile-drawer-links">
         <a href="home.html" class="mobile-drawer-link">01. Главная</a>
@@ -52,26 +52,26 @@
                 <div class="calc-group">
                     <label>1. Длительность выступления</label>
                     <div class="calc-options">
-                        <button class="calc-opt active" data-price="15000" onclick="selectCalc(this, 'blocks')">1 блок (45 мин)</button>
-                        <button class="calc-opt" data-price="25000" onclick="selectCalc(this, 'blocks')">2 блока по 45 мин</button>
-                        <button class="calc-opt" data-price="35000" onclick="selectCalc(this, 'blocks')">3 блока (весь вечер)</button>
+                        <button type="button" class="calc-opt active" data-price="15000" onclick="selectCalc(this, 'blocks')">1 блок (45 мин)</button>
+                        <button type="button" class="calc-opt" data-price="25000" onclick="selectCalc(this, 'blocks')">2 блока по 45 мин</button>
+                        <button type="button" class="calc-opt" data-price="35000" onclick="selectCalc(this, 'blocks')">3 блока (весь вечер)</button>
                     </div>
                 </div>
 
                 <div class="calc-group">
                     <label>2. Звуковое и световое оборудование</label>
                     <div class="calc-options">
-                        <button class="calc-opt active" data-price="0" onclick="selectCalc(this, 'sound')">Аппаратура площадки</button>
-                        <button class="calc-opt" data-price="6000" onclick="selectCalc(this, 'sound')">Свой комплект звука (+6 000 ₽)</button>
-                        <button class="calc-opt" data-price="11000" onclick="selectCalc(this, 'sound')">Звук + Свет + DJ (+11 000 ₽)</button>
+                        <button type="button" class="calc-opt active" data-price="0" onclick="selectCalc(this, 'sound')">Аппаратура площадки</button>
+                        <button type="button" class="calc-opt" data-price="6000" onclick="selectCalc(this, 'sound')">Свой комплект звука (+6 000 ₽)</button>
+                        <button type="button" class="calc-opt" data-price="11000" onclick="selectCalc(this, 'sound')">Звук + Свет + DJ (+11 000 ₽)</button>
                     </div>
                 </div>
 
                 <div class="calc-group" style="margin-bottom:0;">
                     <label>3. Дополнительный формат</label>
                     <div class="calc-options">
-                        <button class="calc-opt active" data-price="0" onclick="selectCalc(this, 'extra')">Только вокал</button>
-                        <button class="calc-opt" data-price="12000" onclick="selectCalc(this, 'extra')">Вокал + Ведение интерактивов (+12 000 ₽)</button>
+                        <button type="button" class="calc-opt active" data-price="0" onclick="selectCalc(this, 'extra')">Только вокал</button>
+                        <button type="button" class="calc-opt" data-price="12000" onclick="selectCalc(this, 'extra')">Вокал + Ведение интерактивов (+12 000 ₽)</button>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,42 @@
         </div>
     </div>
 </section>
+<section class="section" style="padding-top: 10px;">
+    <div class="container">
+        <div class="hero-grid" style="align-items: center;">
+            <div class="blend-photo-box">
+                <img src="images/artist-4.jpg" alt="Сценический свет и живой звук KAZAKK SHOW">
+            </div>
 
+            <div>
+                <span class="eyebrow">Организация и технический райдер</span>
+                <h2 style="font-size: 32px; margin-bottom: 18px;">Частые вопросы заказчиков</h2>
+
+                <div class="faq-list">
+                    <details class="faq-item" open>
+                        <summary>Сколько времени нужно на приезд и настройку звука?</summary>
+                        <p>Мы приезжаем на площадку за 40–60 минут до прихода первых гостей, аккуратно устанавливаем аппаратуру, проводим саундчек и в начале вечера уже полностью готовы к работе.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Что требуется от ресторана или банкетного зала?</summary>
+                        <p>Если мы привозим свой комплект звука — нужна только стандартная розетка 220В в пределах 10–15 метров от сцены и свободная площадка 2×2 метра. Если на площадке уже есть свой звук — заранее согласуем подключение нашего радиомикрофона и ноутбука с местным звукорежиссёром.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Можно ли оплатить по безналичному расчёту и по договору?</summary>
+                        <p>Да, мы официально работаем с компаниями и организаторами: заключаем договор, предоставляем закрывающие документы (чек самозанятого или акт ИП) и принимаем оплату по расчётному счёту.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Выезжаете ли вы на загородные площадки и базы отдыха?</summary>
+                        <p>Да, выезжаем на любые загородные площадки, шатры и базы отдыха. Трансфер в пределах города уже включён в стоимость, а выезд за город обсуждается индивидуально при бронировании даты.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="playlist-bar" id="playlist-bar">
     <span>Выбрано песен в программу вечера: <strong id="playlist-count">0</strong></span>
     <a href="contacts.html" class="btn btn-red" style="padding: 9px 18px;">Передать в заявку →</a>
@@ -93,6 +128,15 @@
 
 <footer class="footer-plate">
     <div class="container">
+        <div class="footer-top">
+            <div style="font-size: 14px; font-weight: 600;">Живой вокал и музыкальное сопровождение мероприятий</div>
+            <div class="footer-links">
+                <a href="home.html">Главная</a>
+                <a href="programs.html">Калькулятор сметы</a>
+                <a href="repertoire.html">Конструктор плейлиста</a>
+                <a href="contacts.html">Календарь дат</a>
+            </div>
+        </div>
         <div class="footer-giant-title">KAZAKK SHOW</div>
         <div style="display:flex; justify-content:space-between; font-size:13px; opacity:0.85; flex-wrap:wrap; gap:10px;">
             <span>© 2026 KAZAKK SHOW</span>
@@ -106,6 +150,7 @@ function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');
 }
+
 function closeMobileDrawer() {
     document.getElementById('mobile-drawer').classList.remove('open');
     document.getElementById('mobile-drawer-overlay').classList.remove('open');
@@ -118,10 +163,10 @@ let state = JSON.parse(localStorage.getItem('artist_calc_state') || 'null') || {
 };
 
 function renderCalcUI() {
-    document.querySelectorAll('.calc-group').forEach((groupEl, gIdx) => {
+    document.querySelectorAll('.calc-group').forEach(function(groupEl, gIdx) {
         const key = gIdx === 0 ? 'blocks' : (gIdx === 1 ? 'sound' : 'extra');
         const buttons = groupEl.querySelectorAll('.calc-opt');
-        buttons.forEach((b, bIdx) => {
+        buttons.forEach(function(b, bIdx) {
             b.classList.toggle('active', bIdx === state[key].index);
         });
     });
@@ -140,9 +185,10 @@ function renderCalcUI() {
 function selectCalc(btn, group) {
     const buttons = Array.from(btn.parentElement.querySelectorAll('.calc-opt'));
     const idx = buttons.indexOf(btn);
+    const cleanLabel = btn.innerText.split(' (+')[0];
     state[group] = {
         price: parseInt(btn.getAttribute('data-price')),
-        label: btn.innerText.split(' (+')[0],
+        label: cleanLabel,
         index: idx
     };
     renderCalcUI();

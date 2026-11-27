@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты и дата — KAZAKK SHOW</title>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -44,22 +44,28 @@
 <section class="section">
     <div class="container">
         <div class="hero-grid" style="align-items:start;">
-            <div class="card">
-                <span class="eyebrow">График выступлений • Сезон 2026</span>
-                <h2 style="font-size:32px; margin-bottom:10px;">Календарь свободных дат</h2>
-                <p style="font-size:14px; color:var(--muted); margin-bottom:16px;">Красные перечёркнутые числа уже забронированы. Листайте месяцы стрелками и нажмите на любую свободную дату, чтобы выбрать её для заявки.</p>
-                
-                <div class="cal-header">
-                    <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)" title="Предыдущий месяц">←</button>
-                    <strong id="cal-month-title" class="cal-month-title">Ноябрь 2026</strong>
-                    <button type="button" class="cal-nav-btn" onclick="changeMonth(1)" title="Следующий месяц">→</button>
+            <div>
+                <div class="card" style="margin-bottom: 24px;">
+                    <span class="eyebrow">График выступлений • Сезон 2026</span>
+                    <h2 style="font-size:32px; margin-bottom:10px;">Календарь свободных дат</h2>
+                    <p style="font-size:14px; color:var(--muted); margin-bottom:16px;">Красные перечёркнутые числа уже забронированы. Листайте месяцы стрелками и нажмите на любую свободную дату, чтобы выбрать её для заявки.</p>
+                    
+                    <div class="cal-header">
+                        <button type="button" class="cal-nav-btn" onclick="changeMonth(-1)" title="Предыдущий месяц">←</button>
+                        <strong id="cal-month-title" class="cal-month-title">Ноябрь 2026</strong>
+                        <button type="button" class="cal-nav-btn" onclick="changeMonth(1)" title="Следующий месяц">→</button>
+                    </div>
+
+                    <div class="cal-weekdays">
+                        <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                    </div>
+
+                    <div class="calendar-grid" id="cal-grid"></div>
                 </div>
 
-                <div class="cal-weekdays">
-                    <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                <div class="blend-photo-box">
+                    <img src="images/artist-6.jpg" alt="Артист KAZAKK SHOW на мероприятии">
                 </div>
-
-                <div class="calendar-grid" id="cal-grid"></div>
             </div>
 
             <div class="card" style="border: 1.5px solid var(--ink);">
@@ -108,6 +114,15 @@
 
 <footer class="footer-plate">
     <div class="container">
+        <div class="footer-top">
+            <div style="font-size: 14px; font-weight: 600;">Живой вокал и музыкальное сопровождение мероприятий</div>
+            <div class="footer-links">
+                <a href="home.html">Главная</a>
+                <a href="programs.html">Калькулятор сметы</a>
+                <a href="repertoire.html">Конструктор плейлиста</a>
+                <a href="contacts.html">Календарь дат</a>
+            </div>
+        </div>
         <div class="footer-giant-title">KAZAKK SHOW</div>
         <div style="display:flex; justify-content:space-between; font-size:13px; opacity:0.85; flex-wrap:wrap; gap:10px;">
             <span>© 2026 KAZAKK SHOW</span>
@@ -290,4 +305,3 @@ function sendToTelegram(e) {
 </script>
 </body>
 </html>
-

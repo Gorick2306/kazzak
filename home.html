@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAZAKK SHOW — Главная</title>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <a href="repertoire.html" class="nav-link">Репертуар</a>
             <a href="contacts.html" class="btn btn-red">Проверить дату</a>
         </div>
-        <button class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
+        <button type="button" class="mobile-menu-btn" onclick="openMobileDrawer()" aria-label="Открыть меню">☰</button>
     </div>
 </header>
 
@@ -27,7 +27,7 @@
 <aside class="mobile-drawer" id="mobile-drawer">
     <div class="mobile-drawer-head">
         <span class="center-brand" style="padding:0; font-size:22px;">KAZAKK <span>SHOW</span></span>
-        <button class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
+        <button type="button" class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="Закрыть меню">✕</button>
     </div>
     <nav class="mobile-drawer-links">
         <a href="home.html" class="mobile-drawer-link">01. Главная</a>
@@ -49,12 +49,12 @@
             <p>Профессиональный исполнитель на корпоратив, юбилей или свадьбу. Сильный живой вокал, свой комплект звука и индивидуальный плейлист под гостей.</p>
             <div style="display:flex; gap:14px; flex-wrap:wrap;">
                 <a href="programs.html" class="btn btn-red">Рассчитать смету →</a>
-                <button onclick="document.getElementById('kp-modal').classList.add('open')" class="btn btn-outline">Презентация артиста (PDF)</button>
+                <button type="button" onclick="document.getElementById('kp-modal').classList.add('open')" class="btn btn-outline">Презентация артиста (PDF)</button>
             </div>
 
             <div class="demo-player" id="demo-player">
                 <div class="player-top">
-                    <button class="play-circle" id="play-btn-hero" onclick="window.parent.postMessage({type:'toggle'}, '*')">▶</button>
+                    <button type="button" class="play-circle" id="play-btn-hero" onclick="window.parent.postMessage({type:'toggle'}, '*')">▶</button>
                     <div style="flex:1;">
                         <div style="font-size:12px; color:var(--red); font-weight:700; text-transform:uppercase;">Живое демо-исполнение</div>
                         <strong id="demo-title-hero" style="font-size:15px;">Танцевальный поп-хит (Live)</strong>
@@ -64,20 +64,26 @@
                     </div>
                 </div>
                 <div class="demo-tracks">
-                    <button class="demo-chip active" onclick="window.parent.postMessage({type:'switch', index:0}, '*')">Поп-драйв</button>
-                    <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:1}, '*')">Хиты 90-х</button>
-                    <button class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:2}, '*')">Лирика / Лаунж</button>
+                    <button type="button" class="demo-chip active" onclick="window.parent.postMessage({type:'switch', index:0}, '*')">Поп-драйв</button>
+                    <button type="button" class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:1}, '*')">Хиты 90-х</button>
+                    <button type="button" class="demo-chip" onclick="window.parent.postMessage({type:'switch', index:2}, '*')">Лирика / Лаунж</button>
                 </div>
             </div>
         </div>
 
-        <div class="collage">
-            <img class="collage-main" src="images/artist-1.jpg" alt="Вокалист KAZAKK SHOW на сцене">
-            <img class="collage-sub" src="images/artist-2.jpg" alt="Выступление KAZAKK SHOW на корпоративе">
+        <div class="hero-photo-blend">
+            <img src="images/artist-1.jpg" alt="Вокалист KAZAKK SHOW на сцене">
         </div>
     </div>
 </section>
 
+<section class="section" style="padding-top: 10px; padding-bottom: 30px;">
+    <div class="container">
+        <div class="blend-photo-box">
+            <img src="images/artist-2.jpg" alt="Выступление KAZAKK SHOW на корпоративе">
+        </div>
+    </div>
+</section>
 <section class="section">
     <div class="container">
         <div class="section-head">
@@ -113,6 +119,96 @@
     </div>
 </section>
 
+<section class="section" style="padding-top: 20px;">
+    <div class="container">
+        <div class="section-head">
+            <h2>Живая энергетика со сцены</h2>
+            <p style="color:var(--muted); max-width:440px;">Реальные фрагменты с корпоративов, юбилеев и свадеб — нажмите на обложку, чтобы включить видео со звуком.</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="video-card" onclick="openShowVideo('video/show-1.mp4', 'Танцевальный отрыв на корпоративе (Live)')">
+                <img src="images/video-cover-1.jpg" alt="Танцевальный отрыв на корпоративе KAZAKK SHOW">
+                <div class="video-overlay">
+                    <span class="video-badge">01 / Корпоратив</span>
+                    <div class="video-play-icon">▶</div>
+                    <div class="video-caption">
+                        <strong>Танцевальный отрыв (Live)</strong>
+                        <span>Драйв с первых минут • 0:35</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card" onclick="openShowVideo('video/show-2.mp4', 'Хиты 90-х и 2000-х — поёт весь зал')">
+                <img src="images/video-cover-2.jpg" alt="Хиты 90-х и 2000-х KAZAKK SHOW">
+                <div class="video-overlay">
+                    <span class="video-badge">02 / Юбилей</span>
+                    <div class="video-play-icon">▶</div>
+                    <div class="video-caption">
+                        <strong>Хиты 90-х — поёт весь зал</strong>
+                        <span>Живой контакт с гостями • 0:42</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card" onclick="openShowVideo('video/show-3.mp4', 'Лирика и первый танец на свадьбе')">
+                <img src="images/video-cover-3.jpg" alt="Лирика и первый танец на свадьбе KAZAKK SHOW">
+                <div class="video-overlay">
+                    <span class="video-badge">03 / Свадьба</span>
+                    <div class="video-play-icon">▶</div>
+                    <div class="video-caption">
+                        <strong>Лирика и первый танец</strong>
+                        <span>Атмосфера вечера • 0:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding-top: 20px;">
+    <div class="container">
+        <div class="section-head">
+            <h2>Отзывы заказчиков и ведущих</h2>
+            <p style="color:var(--muted); max-width:420px;">Реальные впечатления организаторов и гостей после мероприятий.</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <div>
+                    <span class="eyebrow">Корпоратив • 85 гостей</span>
+                    <p style="font-size:14px; color:var(--ink); margin-bottom:18px;">«Приглашали KAZAKK SHOW на годовой корпоратив компании. С первой же песни на танцпол вышли даже те, кто обычно сидит за столом. Свой звук привезли и настроили за 40 минут до сбора гостей!»</p>
+                </div>
+                <div style="border-top:1px solid var(--border); padding-top:12px; font-size:13px;">
+                    <strong>Елена Соколова</strong><br>
+                    <span style="color:var(--muted);">HR-директор</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="eyebrow">Свадебный банкет</span>
+                    <p style="font-size:14px; color:var(--ink); margin-bottom:18px;">«Как ведущий мероприятий скажу: работать в паре с этим вокалистом — одно удовольствие. Чувствует настроение зала, вовремя подхватывает паузы и поёт вживую так, что мурашки идут.»</p>
+                </div>
+                <div style="border-top:1px solid var(--border); padding-top:12px; font-size:13px;">
+                    <strong>Максим Громов</strong><br>
+                    <span style="color:var(--muted);">Ведущий праздников</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="eyebrow">Юбилей 50 лет</span>
+                    <p style="font-size:14px; color:var(--ink); margin-bottom:18px;">«Заранее выбрали на сайте 10 любимых песен именинника. Всё исполнили на высшем уровне, гости потом ещё неделю спрашивали контакты артиста. Огромное спасибо за праздник!»</p>
+                </div>
+                <div style="border-top:1px solid var(--border); padding-top:12px; font-size:13px;">
+                    <strong>Ирина и Сергей</strong><br>
+                    <span style="color:var(--muted);">Частный праздник</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="playlist-bar" id="playlist-bar">
     <span>Выбрано песен в программу вечера: <strong id="playlist-count">0</strong></span>
     <a href="contacts.html" class="btn btn-red" style="padding: 9px 18px;">Передать в заявку →</a>
@@ -120,7 +216,7 @@
 
 <div class="kp-modal" id="kp-modal">
     <div class="kp-sheet">
-        <button onclick="document.getElementById('kp-modal').classList.remove('open')" style="position:absolute; top:16px; right:18px; background:none; border:none; font-size:22px; cursor:pointer;">✕</button>
+        <button type="button" onclick="document.getElementById('kp-modal').classList.remove('open')" style="position:absolute; top:16px; right:18px; background:none; border:none; font-size:22px; cursor:pointer;">✕</button>
         <span class="eyebrow">Коммерческое предложение • Сезон 2026</span>
         <h2 style="font-size: 32px; margin-bottom: 12px;">KAZAKK SHOW — Живой вокал</h2>
         <p style="color: var(--muted); font-size: 14px; margin-bottom: 18px;">Профессиональное музыкальное оформление корпоративных и частных мероприятий. Работаем по договору, возможна оплата по расчётному счёту (самозанятый / ИП).</p>
@@ -131,7 +227,17 @@
             • Собственный комплект звука и радиомикрофоны<br>
             • Стоимость: от 15 000 ₽ до 45 000 ₽ под ключ
         </div>
-        <button onclick="window.print()" class="btn btn-red" style="width:100%;">Сохранить в PDF / Распечатать для директора</button>
+        <button type="button" onclick="window.print()" class="btn btn-red" style="width:100%;">Сохранить в PDF / Распечатать для директора</button>
+    </div>
+</div>
+
+<div class="kp-modal" id="video-modal" onclick="if(event.target===this) closeShowVideo()">
+    <div class="video-modal-sheet">
+        <div class="video-modal-head">
+            <strong id="video-modal-title" style="font-size:15px;">Выступление KAZAKK SHOW</strong>
+            <button type="button" onclick="closeShowVideo()" class="video-modal-close">✕</button>
+        </div>
+        <video id="show-video-player" controls playsinline style="width:100%; max-height:72vh; background:#000; border-radius:6px; display:block;"></video>
     </div>
 </div>
 
@@ -159,9 +265,27 @@ function openMobileDrawer() {
     document.getElementById('mobile-drawer').classList.add('open');
     document.getElementById('mobile-drawer-overlay').classList.add('open');
 }
+
 function closeMobileDrawer() {
     document.getElementById('mobile-drawer').classList.remove('open');
     document.getElementById('mobile-drawer-overlay').classList.remove('open');
+}
+
+function openShowVideo(src, title) {
+    const modal = document.getElementById('video-modal');
+    const vid = document.getElementById('show-video-player');
+    document.getElementById('video-modal-title').innerText = title;
+    vid.src = src;
+    modal.classList.add('open');
+    vid.play().catch(function() {});
+}
+
+function closeShowVideo() {
+    const modal = document.getElementById('video-modal');
+    const vid = document.getElementById('show-video-player');
+    vid.pause();
+    vid.src = '';
+    modal.classList.remove('open');
 }
 
 const saved = JSON.parse(localStorage.getItem('artist_playlist') || '[]');
@@ -181,7 +305,7 @@ window.addEventListener('message', function(e) {
         heroBtn.innerText = e.data.playing ? '❚❚' : '▶';
         heroBtn.style.paddingLeft = e.data.playing ? '0px' : '3px';
     }
-    document.querySelectorAll('.demo-chip').forEach((c, idx) => {
+    document.querySelectorAll('.demo-chip').forEach(function(c, idx) {
         c.classList.toggle('active', idx === e.data.index);
     });
 });
