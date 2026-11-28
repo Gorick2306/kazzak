@@ -193,18 +193,26 @@ let touchStartY = 0;
 frame.addEventListener('load', () => {
     try {
         const doc = frame.contentDocument || frame.contentWindow.document;
+        const getScroll = () => doc.body.scrollTop || doc.documentElement.scrollTop || 0;
         doc.addEventListener('touchstart', (e) => {
-            if (doc.body.scrollTop === 0) touchStartY = e.touches.clientY;
-            else touchStartY = 0;
+            if (getScroll() <= 2 && e.touches.length === 1) {
+                touchStartY = e.touches[0].clientY;
+            } else {
+                touchStartY = 0;
+            }
         }, { passive: true });
         doc.addEventListener('touchend', (e) => {
-            if (touchStartY > 0 && e.changedTouches.clientY - touchStartY > 130 && doc.body.scrollTop === 0) {
-                window.location.reload();
+            if (touchStartY > 0 && e.changedTouches.length === 1) {
+                const pullDist = e.changedTouches[0].clientY - touchStartY;
+                if (pullDist > 110 && getScroll() <= 2) {
+                    window.location.reload();
+                }
             }
             touchStartY = 0;
         }, { passive: true });
     } catch (err) {}
 });
+
 
 </script>
 
